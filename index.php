@@ -20,16 +20,27 @@
     <span>*Телефон</span>
     <input type="tel" name="phone" placeholder="Введите телефон" required>
     </p>
+
     <p>
     <span>Комент</span>
-    <input type="text" name="comment" placeholder="Напишите коментарий">
+    <textarea name="comment" placeholder="Напишите коментарий"></textarea>
     </p>
 
     <p>
         <input type="submit" id="submit" value="Отправить">
     </p>
 
+
+
 </form>
 
+<!--
+
+<form name="file_upload" method="POST" action="form.php" enctype="multipart/form-data">
+    <p><label>Ваш аватар: <input type="file" name="avatar"></label></p>
+    <p><input type="submit" name="send" value="Отправить файл"></p>
+</form>
+
+-->
 </body>
 </html>
