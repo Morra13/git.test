@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form action="ob.php" method="post" name="form">
+<form action="form.php" method="post" name="form">
 
     <p>
     <span>*Имя</span>
@@ -29,8 +29,6 @@
     <p>
         <input type="submit" id="submit" value="Отправить">
     </p>
-
-
 
 </form>
 
