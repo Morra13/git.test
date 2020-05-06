@@ -1,5 +1,12 @@
 <?php
 
+if(isset($_FILES['avatar'])) {
+
+    $file_name = $_FILES['avatar']['name'];
+    $file_tmp = $_FILES['avatar']['tmp_name'];
+
+    move_uploaded_file($file_tmp, 'D:/OSPanel/domains/git.test/avatars/' . rand(1, 99999) . $file_name);
+
 $filename = "test.json";
 
 if (isset($_POST)) {
@@ -7,7 +14,8 @@ if (isset($_POST)) {
         $name = $_POST['user_name'],
         $email = $_POST['email'],
         $phone = $_POST['phone'],
-        $comment = $_POST['comment']
+        $comment = $_POST['comment'],
+        $avatar = $_FILES['avatar']['name']
     ];
 $json = json_encode($all, JSON_UNESCAPED_UNICODE);
 
@@ -26,6 +34,8 @@ $json = json_encode($all, JSON_UNESCAPED_UNICODE);
     echo 'Данные не удалось отправить';
 }
 
+
+}
 
 
 
