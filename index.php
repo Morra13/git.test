@@ -10,7 +10,7 @@
 
     <p>
         <span>*Имя</span>
-        <input type="text" name="user_name" placeholder="Введите имя" required>
+        <input type="text" name="user_name" placeholder="Введите имя" minlength="3" maxlength="15" required>
     </p>
         <span>*Емайл</span>
         <input type="email" name="email" placeholder="Введите емайл" required>
@@ -18,12 +18,12 @@
 
     <p>
         <span>*Телефон</span>
-        <input type="tel" name="phone" placeholder="Введите телефон" required>
+        <input type="tel" name="phone" placeholder="Введите телефон" minlength="13" maxlength="13" required>
     </p>
 
     <p>
         <span>Комент</span>
-        <textarea name="comment" placeholder="Напишите коментарий"></textarea>
+        <textarea name="comment" placeholder="Напишите коментарий" minlength="5"></textarea>
     </p>
 
     <p>

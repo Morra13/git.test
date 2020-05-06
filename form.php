@@ -1,5 +1,6 @@
 <?php
 
+
 if(isset($_FILES['avatar'])) {
 
     $file_name = $_FILES['avatar']['name'];
@@ -17,7 +18,16 @@ if (isset($_POST)) {
         $comment = $_POST['comment'],
         $avatar = $_FILES['avatar']['name']
     ];
-$json = json_encode($all, JSON_UNESCAPED_UNICODE);
+
+    if (!isset($all)){
+        setcookie('cook', 'cookie', time() +86400);
+        echo 'есть куки :' . $_COOKIE['cook'] . '<br/>';
+    } else {
+        echo 'нет куки' . '<br/>';
+    }
+
+    $json = json_encode($all, JSON_UNESCAPED_UNICODE);
+
 
     if (file_exists($filename)) {
         file_put_contents($filename, $json . '
@@ -35,8 +45,8 @@ $json = json_encode($all, JSON_UNESCAPED_UNICODE);
 }
 
 
-}
 
+}
 
 
 
