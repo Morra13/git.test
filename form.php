@@ -12,11 +12,11 @@ $filename = "test.json";
 
 if (isset($_POST)) {
     $all = [
-        $name = $_POST['user_name'],
-        $email = $_POST['email'],
-        $phone = $_POST['phone'],
-        $comment = $_POST['comment'],
-        $avatar = $_FILES['avatar']['name']
+        'name' => $_POST['user_name'],
+        'email' => $_POST['email'],
+        'phone' => $_POST['phone'],
+        'comment' => $_POST['comment'],
+        'avatar' => $_FILES['avatar']['name']
     ];
 
     if (!isset($all)){
@@ -47,6 +47,8 @@ if (isset($_POST)) {
 
 
 }
+?>
+
 
 
 
