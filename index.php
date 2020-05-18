@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Ввод данных</title>
     <meta charset="UTF-8">
 
 </head>
 
 <body>
+<h1><b>Введите свои данные</b></h1>
 <form action="form.php" method="post" name="form" enctype="multipart/form-data">
 
     <p>
@@ -33,6 +35,11 @@
 
     <p>
         <input type="submit" id="submit" value="Отправить">
+    </p>
+</form>
+<form action="registration">
+    <p>
+        <button type="submit"> Переход на Авторизацию/Регистрацию </button>
     </p>
 </form>
 

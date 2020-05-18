@@ -7,38 +7,39 @@ $data = $_POST;
 if(isset($data['reg'])){
 
     $errors = [];
-    if(trim($data['login'] === $arrOldUsers['login'])){
-        $errors[] = 'Такой логин уже есть!';
-    }
+        if(trim($data['login'] == '')){
+            $errors[] = 'Введите логин!';
+        }
+        if(trim($data['email'] == '')){
+            $errors[] = 'Введите email!';
+        }
+        if($data['password'] == ''){
+            $errors[] = 'Введите password!';
+        }
 
-    if(trim($data['email'] === $arrOldUsers['email'])){
-        $errors[] = 'Такой email уже есть!';
-    }
-    if(trim($data['login'] == '')){
-        $errors[] = 'Введите логин!';
-    }
-    if(trim($data['email'] == '')){
-        $errors[] = 'Введите email!';
-    }
-    if($data['password'] == ''){
-        $errors[] = 'Введите password!';
-    }
-
-    if($data['password_2'] != $data['password']){
-        $errors[] = 'Повторный пароль не верный';
-    }
+        if($data['password_2'] != $data['password']){
+            $errors[] = 'Повторный пароль не верный';
+        }
+            if(isset($arrOldUsers)) {
+                foreach ($arrOldUsers as $v) {
+                    if (trim($data['login'] === $v['login'])) {
+                        $errors[] = 'Такой логин уже есть!';
+                    }
+                    if (trim($data['email'] === $v['email'])) {
+                        $errors[] = 'Такой email уже есть!';
+                    }
+                }
+            }
 
 if(empty($errors) && isset($arrOldUsers)){
-    $arrUser = [
+    $arrNewUser = [
         'login' => $data['login'],
         'email' => $data['email'],
         'password' => md5($data['password'])
     ];
 
-        $arrNewUser = $arrUser;
-
-        $arrAllUsers = [$arrOldUsers, $arrNewUser];
-        $json2 = json_encode($arrAllUsers, JSON_UNESCAPED_UNICODE);
+        $arrOldUsers[] = $arrNewUser;
+        $json2 = json_encode($arrOldUsers, JSON_UNESCAPED_UNICODE);
 
         file_put_contents($FileName, $json2);
 
@@ -86,5 +87,11 @@ if(empty($errors) && isset($arrOldUsers)){
 
     <p>
         <button type="submit" name="reg">Регистрация</button>
+    </p>
+</form>
+
+<form action="auth.php">
+    <p>
+    <button type="submit">Вход</button>
     </p>
 </form>
