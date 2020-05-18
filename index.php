@@ -3,13 +3,10 @@
 <head>
     <title>Ввод данных</title>
     <meta charset="UTF-8">
-
 </head>
-
 <body>
 <h1><b>Введите свои данные</b></h1>
 <form action="form.php" method="post" name="form" enctype="multipart/form-data">
-
     <p>
         <span>*Имя</span>
         <input type="text" name="user_name" placeholder="Введите имя" minlength="3" maxlength="15" required>
@@ -42,9 +39,6 @@
         <button type="submit"> Переход на Авторизацию/Регистрацию </button>
     </p>
 </form>
-
-
-
 
 </body>
 </html>
