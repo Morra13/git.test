@@ -5,9 +5,9 @@ if (isset($_POST['exit'])) {
     header('Location: /html/exit.php');
 }
 if (isset($_COOKIE['pass_cookie'])) {
-    $FileJson = $_SERVER['DOCUMENT_ROOT'] . '/db/info.json';
-    $json = file_get_contents($FileJson);
-    echo $json . '<br/>';
+    $sFileJson = $_SERVER['DOCUMENT_ROOT'] . '/db/info.json';
+    $arrJson = file_get_contents($sFileJson);
+    echo $arrJson . '<br/>';
 } else {
     header('Location: /html/exit.php');
 }

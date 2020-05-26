@@ -17,8 +17,8 @@ require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
             <input type="text" name="user_name" placeholder="Введите имя" minlength="3" maxlength="15" required>
         </p>
         <p>
-        <span>*Емайл</span>
-        <input type="email" name="email" placeholder="Введите емайл" required>
+            <span>*Емайл</span>
+            <input type="email" name="email" placeholder="Введите емайл" required>
         </p>
         <p>
             <span>*Телефон</span>
@@ -30,7 +30,8 @@ require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
         </p>
         <p>
             <label>Ваш аватар:
-                <input type="file" name="avatar"></label>
+                <input type="file" name="avatar">
+            </label>
         </p>
         <p>
             <input type="submit" id="submit" value="Отправить">

@@ -11,14 +11,14 @@ require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
     <body>
     <h1><b>Авторизация</b></h1>
     <form action="/php/auth.php" method="post">
-        <p>
         <p>Email</p>
-        <input type="email" name="email">
+        <p>
+            <input type="email" name="email" placeholder="Введите email">
         </p>
         <p>
         <p>Пароль</p>
         <p>
-            <input type="password" name="password">
+            <input type="password" name="password" placeholder="Введите пароль">
         </p>
         <button type="submit" name="auth">Вход</button>
     </form>

@@ -1,9 +1,7 @@
 <!DOCTYPE HTML>
 <head>
     <title></title>
-
 </head>
-
 <body>
 
 <p><a href="/html/auth.html.php">Авторизоваться</a></p>

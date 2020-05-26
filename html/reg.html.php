@@ -11,27 +11,19 @@ require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
     <body>
 
     <form action="/php/reg.php" method="post">
-        <p>
+
         <p>Логин</p>
-        <input type="text" name="login">
-        </p>
-        <p>
+        <input type="text" name="login" placeholder="Введите логин" minlength="4">
         <p>Емайл</p>
-        <input type="email" name="email">
-        </p>
-        <p>
+        <input type="email" name="email" placeholder="Введите email" minlength="6">
         <p>Пароль</p>
-        <input type="password" name="password">
-        </p>
-        <p>
+        <input type="password" name="password" placeholder="Введите пароль" minlength="6">
         <p>Повторите пароль</p>
-        <input type="password" name="password_2">
-        </p>
+        <input type="password" name="password_2" placeholder="Повторите пароль" minlength="6">
         <p>
             <button type="submit" name="reg">Регистрация</button>
         </p>
     </form>
-
     <form action="/html/auth.html.php">
         <p>
             <button type="submit">Вход</button>
