@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');
 ?>
 
     <!DOCTYPE html>
@@ -34,5 +34,5 @@ require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
     </html>
 
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php');
 ?>

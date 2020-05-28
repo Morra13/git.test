@@ -12,5 +12,5 @@ if (isset($_COOKIE['pass_cookie'])) {
     header('Location: /html/exit.php');
 }
 
-require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php');
 

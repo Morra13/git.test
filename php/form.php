@@ -1,5 +1,5 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');
 
 $sFileName = $_SERVER['DOCUMENT_ROOT'] . '/db/info.json';
 $sJson = file_get_contents($sFileName);
@@ -29,7 +29,7 @@ if (isset($_FILES['avatar'])) {
     }
 }
 
-require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php');
 
 
 

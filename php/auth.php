@@ -19,10 +19,10 @@ if (isset($arrData['auth']) && isset($arrUsers)) {
         echo 'Все ок';
     } else {
         echo array_shift($arrError) . '</div><hr/>';
-        require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/header.php');
+        require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');
     }
 } else {
     echo 'Такой email не зарегистрирован';
 }
 
-require($_SERVER['DOCUMENT_ROOT'] . '/header.footer/footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php');
