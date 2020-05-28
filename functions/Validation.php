@@ -1,6 +1,6 @@
 <?php
 
-class validation
+class Validation
 {
     public $sRegistration = 'Вы зарегистрировались';
 
@@ -61,6 +61,23 @@ class validation
             echo $this->sRegistration;
         } else {
             echo array_shift($arrError);
+        }
+    }
+
+    public function AuthValidation(array $arrData, array $arrUsers)
+    {
+        foreach ($arrUsers as $v) {
+            if (trim($arrData['email']) === $v['email'] && md5($arrData['password']) === $v['password']) {
+                setcookie('pass_cookie', 'inf', time() + 86400, '/');
+                header('Location: /php/info.php');
+                exit;
+            } else {
+                $arrError[] = 'Не верный емейл или пароль';
+            }
+        }
+        if (!empty($arrError)) {
+            echo array_shift($arrError);
+            require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');
         }
     }
 
