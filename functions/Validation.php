@@ -1,9 +1,18 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/functions/EnumError.php';
 
+/**
+ * Проверка данных
+ * Class Validation
+ */
 class Validation
 {
-    public $sRegistration = 'Вы зарегистрировались';
-
+    /**
+     * Проверка введенных данных
+     *
+     * @param array $arrData
+     * @return mixed
+     */
     public function DataValidation(array $arrData)
     {
         if (isset($arrData['reg'])) {
@@ -11,73 +20,80 @@ class Validation
                 $arrError[] = 'Введите логин!';
             }
             if (trim($arrData['email'] == '')) {
-                $arrError[] = 'Введите email!';
+                $arrError[] = EnumError::ERROR_NO_EMAIL;
             }
             if ($arrData['password'] == '') {
-                $arrError[] = 'Введите пароль!';
+                $arrError[] = EnumError::ERROR_PASSWORD;
             }
             if ($arrData['password_2'] != $arrData['password']) {
-                $arrError[] = 'Повторный пароль не верный';
+                $arrError[] = EnumError::ERROR_PASSWORD;
             }
         }
         if (isset($arrError)) {
-            return array_shift($arrError);
+            echo array_shift($arrError);
         } else {
             return true;
         }
     }
 
-    public function UserRegistration(array $arrData, string $sFileName)
+    /**
+     * Проверка наличия данных в файле
+     *
+     * @param $arrOldUsers
+     * @return bool
+     */
+    public function FileValidation($arrOldUsers): bool
     {
-        $arrNewUser[] = [
-            'login' => $arrData['login'],
-            'email' => $arrData['email'],
-            'password' => md5($arrData['password'])
-        ];
-        $sJson = json_encode($arrNewUser, JSON_UNESCAPED_UNICODE);
-        file_put_contents($sFileName, $sJson);
-        echo $this->sRegistration;
+        if (isset($arrOldUsers)) {
+            return true;
+        }
     }
 
-    public function UserValidation(array $arrData, string $sFileName, array $arrOldUsers)
+    /**
+     * Проверка логина и емейла на совпадение
+     *
+     * @param array $arrData
+     * @param array $arrOldUsers
+     * @return mixed
+     */
+    public function UserValidation(array $arrData, array $arrOldUsers)
     {
         foreach ($arrOldUsers as $arrValue) {
             if (trim($arrData['login']) === $arrValue['login']) {
-                $arrError[] = 'Такой логин уже есть!';
+                $arrError[] = EnumError::ERROR_LOGIN;
             }
             if (trim($arrData['email']) === $arrValue['email']) {
-                $arrError[] = 'Такой email уже есть!';
+                $arrError[] = EnumError::ERROR_EMAIL;
             }
         }
-        if (empty($arrError)) {
-            $arrNewUser = [
-                'login' => $arrData['login'],
-                'email' => $arrData['email'],
-                'password' => md5($arrData['password'])
-            ];
-            $arrOldUsers[] = $arrNewUser;
-            $sJson = json_encode($arrOldUsers, JSON_UNESCAPED_UNICODE);
-            file_put_contents($sFileName, $sJson);
-            echo $this->sRegistration;
-        } else {
+        if (isset($arrError)) {
             echo array_shift($arrError);
+        } else {
+            return true;
         }
     }
 
+    /**
+     * Проверка емейла и пароля
+     *
+     * @param array $arrData
+     * @param array $arrUsers
+     * @return mixed
+     */
     public function AuthValidation(array $arrData, array $arrUsers)
     {
-        foreach ($arrUsers as $v) {
-            if (trim($arrData['email']) === $v['email'] && md5($arrData['password']) === $v['password']) {
-                setcookie('pass_cookie', 'inf', time() + 86400, '/');
-                header('Location: /php/info.php');
-                exit;
-            } else {
-                $arrError[] = 'Не верный емейл или пароль';
+        foreach ($arrUsers as $arrValue) {
+            if (trim($arrData['email']) === $arrValue['email'] && md5($arrData['password']) === $arrValue['password']) {
+                return true;
             }
         }
-        if (!empty($arrError)) {
-            echo array_shift($arrError);
-            require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');
+        $arrError[] = EnumError::ERROR_EMAIL_PASSWORD;
+
+        require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');
+
+        echo array_shift($arrError);
+        if (!isset($arrError)) {
+            require($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php');
         }
     }
 
