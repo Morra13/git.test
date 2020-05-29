@@ -6,7 +6,7 @@ require($_SERVER['DOCUMENT_ROOT'] . '/functions/EnumError.php');
 $obAuth = new Auth();
 
 if (isset($_POST['exit'])) {
-    $obAuth->UserExit();
+    $obAuth->userExit();
 }
 
 require($_SERVER['DOCUMENT_ROOT'] . '/templates/header.php');

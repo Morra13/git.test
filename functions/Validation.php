@@ -13,7 +13,7 @@ class Validation
      * @param array $arrData
      * @return mixed
      */
-    public function DataValidation(array $arrData)
+    public function dataValidation(array $arrData)
     {
         if (isset($arrData['reg'])) {
             if (trim($arrData['login'] == '')) {
@@ -42,10 +42,12 @@ class Validation
      * @param $arrOldUsers
      * @return bool
      */
-    public function FileValidation($arrOldUsers): bool
+    public function fileValidation($arrOldUsers): bool
     {
         if (isset($arrOldUsers)) {
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -56,7 +58,7 @@ class Validation
      * @param array $arrOldUsers
      * @return mixed
      */
-    public function UserValidation(array $arrData, array $arrOldUsers)
+    public function userValidation(array $arrData, array $arrOldUsers)
     {
         foreach ($arrOldUsers as $arrValue) {
             if (trim($arrData['login']) === $arrValue['login']) {
@@ -80,7 +82,7 @@ class Validation
      * @param array $arrUsers
      * @return mixed
      */
-    public function AuthValidation(array $arrData, array $arrUsers)
+    public function authValidation(array $arrData, array $arrUsers)
     {
         foreach ($arrUsers as $arrValue) {
             if (trim($arrData['email']) === $arrValue['email'] && md5($arrData['password']) === $arrValue['password']) {

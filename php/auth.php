@@ -11,8 +11,8 @@ $obValidation = new Validation();
 $obAuth = new Auth();
 
 if (isset($_POST['auth'])) {
-    if ($obValidation->AuthValidation($arrData, $arrUsers) === true) {
-        $obAuth->UserAuth();
+    if ($obValidation->authValidation($arrData, $arrUsers) === true) {
+        $obAuth->userAuth();
     };
 }
 

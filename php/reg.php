@@ -11,13 +11,13 @@ $obValidation = new Validation();
 $obRegistration = new RegFunc();
 
 if (isset($_POST['reg'])) {
-    if ($obValidation->DataValidation($arrData)) {
-        if ($obValidation->FileValidation($arrOldUsers)) {
-            if ($obValidation->UserValidation($arrData, $arrOldUsers) === true) {
-                $obRegistration->UserRegistration($arrData, $sFileName, $arrOldUsers);
+    if ($obValidation->dataValidation($arrData)) {
+        if ($obValidation->fileValidation($arrOldUsers)) {
+            if ($obValidation->userValidation($arrData, $arrOldUsers) === true) {
+                $obRegistration->userRegistration($arrData, $sFileName, $arrOldUsers);
             }
         } else {
-            $obRegistration->FirstUserRegistration($arrData, $sFileName);
+            $obRegistration->userRegistration($arrData, $sFileName, $arrOldUsers);
         }
     }
 }

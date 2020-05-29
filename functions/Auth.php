@@ -9,7 +9,7 @@ class Auth
     /**
      * Авторизация
      */
-    public function UserAuth()
+    public function userAuth()
     {
         setcookie('pass_cookie', 'inf', time() + 86400, '/');
         header('Location: /php/info.php');
@@ -18,7 +18,7 @@ class Auth
     /**
      * Выход
      */
-    public function UserExit()
+    public function userExit()
     {
         setcookie('pass_cookie', 'inf', time() - 1, '/');
         header('Location: /html/exit.php');
