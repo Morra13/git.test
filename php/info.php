@@ -15,9 +15,12 @@ if (isset($_COOKIE['pass_cookie'])) {
     $sFileJson = $_SERVER['DOCUMENT_ROOT'] . '/db/info.json';
     $arrJson = file_get_contents($sFileJson);
     echo $arrJson . '<br/>';
+    require($_SERVER['DOCUMENT_ROOT'] . '/templates/excel.php');
 } else {
     echo EnumError::ACCESS_ERROR;
 }
 
 require($_SERVER['DOCUMENT_ROOT'] . '/templates/footer.php');
+
+
 
